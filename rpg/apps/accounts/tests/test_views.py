@@ -1,6 +1,5 @@
 from django.test import TestCase, Client
 from django.urls import reverse
-from django.contrib.auth.forms import UserCreationForm
 
 
 class TestAccountsViews(TestCase):
@@ -14,6 +13,7 @@ class TestAccountsViews(TestCase):
             'password2': 'test_password1',
         }
 
+
     def test_signup_status_code(self):
         url = reverse('signup')
         response = self.client.get(url)
@@ -21,8 +21,8 @@ class TestAccountsViews(TestCase):
 
     def test_signup_redirect(self):
         response = self.client.post(reverse('signup'), self.good_credentials)
-        self.assertRedirects(response, reverse('accounts'))
+        self.assertRedirects(response, reverse('successful'))
 
-    def test_csrf(self):
+    def test_signup_csrf(self):
         response = self.client.get(reverse('signup'))
         self.assertContains(response, 'csrfmiddlewaretoken')
