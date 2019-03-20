@@ -1,0 +1,11 @@
+- model: creator.classes
+  pk: 1
+  fields:
+    class_name: Barbarian
+    hit_die: 12
+    skill_points: 4
+    class_skills: '["Climb", "Craft", "Handle Animal", "Intimidate", "Jump", "Listen", "Ride", "Survival", "Swim"]'
+    alignments: '["Neutral", "Chaotic Neutral", "Neutral Good", "Chaotic Good", "Neutral Evil", "Chaotic Evil"]'
+    armor_proficiencies: '["Simple", "Martial"]'
+    weapon_proficiencies: '["Light", "Medium", "Shields"]'
+    spell_caster: false
