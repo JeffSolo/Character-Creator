@@ -1,14 +1,20 @@
-from django.shortcuts import render, HttpResponse, HttpResponseRedirect
+from django.shortcuts import HttpResponseRedirect
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
-from django.urls import reverse_lazy
+from django.urls import reverse
 from django.views import generic
 
 
 class SignUp(generic.CreateView):
     form_class = UserCreationForm
-    success_url = reverse_lazy('successful')
     template_name = 'accounts/signup.html'
 
-# TODO remove after figuring out where to actually redirect to after successful login/signup
-class Successful(generic.TemplateView):
-    template_name = 'accounts/successful_login.html'
+    def form_valid(self, form):
+        form.save()
+        username = self.request.POST['username']
+        password = self.request.POST['password1']
+        user = authenticate(self.request, username=username, password=password)
+        if user is not None:
+            login(self.request, user)
+
+        return HttpResponseRedirect(reverse('home'))
