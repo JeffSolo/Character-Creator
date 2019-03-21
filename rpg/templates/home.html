@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h2>Character Creator</h2>
+{% if user.is_authenticated %}
+  Welcome, {{request.user.username}}<br>
+  <p><a href="{% url 'logout' %}">logout</a></p>
+{% else %}
+Please <a href="{% url 'login' %}">Log In</a> or <a href="{% url 'signup' %}">Sign Up</a>
+{% endif %}
+{% endblock %}

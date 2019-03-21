@@ -19,6 +19,5 @@ from . import views
 
 urlpatterns = [
     path('', include('django.contrib.auth.urls')),
-    path('successful/', views.Successful.as_view(), name='successful'),
     path('signup/', views.SignUp.as_view(), name='signup'),
 ]
