@@ -1,0 +1,41 @@
+[
+  {
+    "model": "creator.races",
+    "pk": 1,
+    "fields": {
+      "race_type": "Human",
+      "favored_class": "Any",
+      "size": "Medium",
+      "speed": 30,
+      "race_info": [],
+      "feats": [],
+      "languages": ["Common"],
+      "traits": [],
+      "special_abilities": [],
+      "ability_modifier": {}
+    }
+  },
+  {
+    "model": "creator.races",
+    "pk": 2,
+    "fields": {
+      "race_type": "Dwarf",
+      "favored_class": "Fighter",
+      "size": "Medium",
+      "speed": 20,
+      "race_info": [],
+      "feats": [],
+      "languages": ["Dwarven", "Common"],
+      "traits": [
+        "+2 saving throws vs poison",
+        "+2 saving throws vs spells and spell-like effects",
+        "+1 attack roll vs orcs and goblinoids",
+        "+4 dodge bonus to AC vs monsters of the giant type",
+        "+2 Appraise checks related to stone or metal items",
+        "+2 Craft checks related to stone or metal"
+      ],
+      "special_abilities": ["Weapon Familiarity", "Darkvision", "Stonecunning", "Stability"],
+      "ability_modifier": {"CON": 2, "CHA": -2}
+    }
+  }
+]
