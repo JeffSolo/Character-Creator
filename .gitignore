@@ -1,6 +1,9 @@
 .DS_STORE
-__pycache__
+.vscode
 .idea
 .coverage
 logfile
 htmlcov
+
+.mypy_cache
+__pycache__
