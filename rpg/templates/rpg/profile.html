@@ -3,7 +3,9 @@
 {% block content %}
     <h1>Characters</h1>
 
+    <p>Characters for {{ user.username }} </p>
     {% if characters %}
+
     <ul>
 
       {% for character in characters %}
@@ -21,5 +23,5 @@
     {% endif %}
 
     <a href="{% url 'creator:create' %}">Create Character</a>
-
+    <p><a href="{% url 'accounts:logout' %}">logout</a></p>
 {% endblock %}

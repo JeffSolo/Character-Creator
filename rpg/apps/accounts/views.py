@@ -1,7 +1,7 @@
 from django.shortcuts import HttpResponseRedirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
-from django.urls import reverse
+from django.shortcuts import redirect
 from django.views import generic
 
 
@@ -17,4 +17,4 @@ class SignUp(generic.CreateView):
         if user is not None:
             login(self.request, user)
 
-        return HttpResponseRedirect(reverse('home'))
+        return redirect('profile')
