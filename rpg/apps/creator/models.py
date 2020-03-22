@@ -36,7 +36,7 @@ class Races(models.Model):
     ability_modifier = JSONField()
 
 
-class Character(models.Model):
+class Characters(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     character_class = models.ForeignKey(Classes, on_delete=models.CASCADE)
     character_race = models.ForeignKey(Races, on_delete=models.CASCADE)

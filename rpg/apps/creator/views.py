@@ -7,19 +7,20 @@ from .forms import MainCharacterForm
 
 from django.urls import reverse_lazy
 from django.views.generic.edit import FormView, CreateView, DeleteView, UpdateView
-from .models import Character
+from .models import Characters
 
 class CharacterView(CreateView):
-    model = Character
+    model = Characters
     fields = ['user', 'character_class', 'character_race']
     exclude = 'Character info'
+    template_name = 'creator/create_character.html'
 
 class CharacterUpdate(UpdateView):
-    model = Character
+    model = Characters
     fields = '__all__'
 
 class CharacterDelete(DeleteView):
-    model = Character
+    model = Characters
 
 class MainView(FormView):
     form_class = MainCharacterForm
