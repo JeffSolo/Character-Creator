@@ -3,8 +3,8 @@
     "model": "creator.races",
     "pk": 1,
     "fields": {
-      "race_type": "Human",
-      "favored_class": "Any",
+      "race": "Human",
+      "favored_class": "All",
       "size": "Medium",
       "speed": 30,
       "race_info": [],
@@ -19,7 +19,7 @@
     "model": "creator.races",
     "pk": 2,
     "fields": {
-      "race_type": "Dwarf",
+      "race": "Dwarf",
       "favored_class": "Fighter",
       "size": "Medium",
       "speed": 20,
