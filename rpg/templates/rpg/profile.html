@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Characters</h1>
+
+    {% if characters %}
+    <ul>
+
+      {% for character in characters %}
+      <li>
+        <!--
+        <a href="{% url 'book-detail' bookinst.book.pk %}">{{bookinst.book.title}}</a> ({{ bookinst.due_back }})
+        -->
+        <p>{{ character.name }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>No characters created.</p>
+    {% endif %}
+
+    <a href="{% url 'creator:create' %}">Create Character</a>
+
+{% endblock %}
