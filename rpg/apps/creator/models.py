@@ -38,8 +38,8 @@ class Races(models.Model):
 
 class Characters(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=48)
     character_class = models.ForeignKey(Classes, on_delete=models.CASCADE)
     character_race = models.ForeignKey(Races, on_delete=models.CASCADE)
-    name = models.CharField(max_length=48)
     level = models.PositiveSmallIntegerField()
     character_info = JSONField()

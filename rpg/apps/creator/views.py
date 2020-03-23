@@ -2,33 +2,38 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import FormView
-from .forms import MainCharacterForm
-
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
-from django.views.generic.edit import FormView, CreateView, DeleteView, UpdateView
+
+from .forms import CharacterForm
 from .models import Characters
 
-class CharacterView(CreateView):
-    model = Characters
-    fields = ['user', 'character_class', 'character_race']
-    exclude = 'Character info'
-    template_name = 'creator/create_character.html'
 
-class CharacterUpdate(UpdateView):
-    model = Characters
-    fields = '__all__'
+class CharacterCreateView(CreateView):
+    form_class = CharacterForm
+    template_name = 'creator/create.html'
+    context_object_name = 'char_list'
 
-class CharacterDelete(DeleteView):
-    model = Characters
-
-class MainView(FormView):
-    form_class = MainCharacterForm
-    template_name = 'creator/main.html'
-    # success_url = '/thanks/'
+    def get_initial(self):
+        initial = super(CharacterCreateView, self).get_initial()
+        initial.update({
+            'level': 1,
+        })
+        if self.request.user.is_authenticated:
+            initial.update({
+                'user': self.request.user,
+                'name': self.request.user.username,
+            })
+        return initial
 
     def form_valid(self, form):
-        # This method is called when valid form data has been POSTed.
-        # It should return an HttpResponse.
-        form.send_email()
+        #form.instance.user = self.request.user
         return super().form_valid(form)
+
+
+class CharacterUpdateView(UpdateView):
+    form_class = CharacterForm
+
+
+class CharacterDeleteView(DeleteView):
+    form_class = CharacterForm
