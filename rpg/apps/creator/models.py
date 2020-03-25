@@ -15,9 +15,9 @@ class Classes(models.Model):
     spell_caster = models.BooleanField()
 
 
-class ClassLevels(models.Model):
-    class_name = models.ForeignKey(Classes, db_column='class', on_delete=models.PROTECT)
+class Levels(models.Model):
     level = models.PositiveSmallIntegerField()
+    class_name = models.ForeignKey(Classes, to_field='class_name', db_column='class', on_delete=models.PROTECT)
     level_info = JSONField()
 
 
@@ -37,9 +37,9 @@ class Races(models.Model):
 
 
 class Characters(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
     name = models.CharField(max_length=48)
-    character_class = models.ForeignKey(Classes, on_delete=models.CASCADE)
-    character_race = models.ForeignKey(Races, on_delete=models.CASCADE)
-    level = models.PositiveSmallIntegerField()
+    character_class = models.ForeignKey(Classes, to_field='class_name', on_delete=models.PROTECT)
+    character_race = models.ForeignKey(Races, to_field='race', on_delete=models.PROTECT)
+    level = models.ForeignKey(Levels, on_delete=models.PROTECT)
     character_info = JSONField()

@@ -14,20 +14,8 @@ class CharacterCreateView(CreateView):
     template_name = 'creator/create.html'
     context_object_name = 'char_list'
 
-    def get_initial(self):
-        initial = super(CharacterCreateView, self).get_initial()
-        initial.update({
-            'level': 1,
-        })
-        if self.request.user.is_authenticated:
-            initial.update({
-                'user': self.request.user,
-                'name': self.request.user.username,
-            })
-        return initial
-
     def form_valid(self, form):
-        #form.instance.user = self.request.user
+        form.instance.user = self.request.user
         return super().form_valid(form)
 
 

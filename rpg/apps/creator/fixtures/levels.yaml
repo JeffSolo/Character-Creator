@@ -1,0 +1,28 @@
+- model: creator.levels
+  pk: 1
+  fields:
+    level: 1
+    class_name: Barbarian
+    level_info:
+      base_attack: 1
+      fortitude_save: 2
+      reflex_save: 0
+      will_save: 0
+      class_special:
+      - Illiteracy
+      class_feats:
+      - Fast Movement
+      - Rage
+- model: creator.levels
+  pk: 2
+  fields:
+    level: 1
+    class_name: Fighter
+    level_info:
+      base_attack: 1
+      fortitude_save: 2
+      reflex_save: 0
+      will_save: 0
+      class_special:
+      - Bonus Feat
+      class_feats:

@@ -12,5 +12,19 @@
       "weapon_proficiencies": ["Light", "Medium", "Shields"],
       "spell_caster": false
     }
+  },
+  {
+    "model": "creator.classes",
+    "pk": 2,
+    "fields": {
+      "class_name": "Fighter",
+      "hit_die": 10,
+      "skill_points": 2,
+      "class_skills": ["Climb", "Craft", "Handle Animal", "Intimidate", "Jump", "Ride", "Swim"],
+      "alignments": ["Lawful Neutral", "Neutral", "Chaotic Neutral", "Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
+      "armor_proficiencies": ["Simple", "Martial"],
+      "weapon_proficiencies": ["Light", "Medium", "Heavy", "Shields", "Tower Shields"],
+      "spell_caster": false
+    }
   }
 ]
