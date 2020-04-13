@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:12-alpine
+    environment:
+      - POSTGRES_DB=$DB_NAME
+      - POSTGRES_USER=$DB_USER
+      - POSTGRES_PASSWORD=$DB_PASS
+    ports:
+      - "5432:5432"
+    volumes:
+      - datavolume:/var/lib/postgresql/data/
+  web:
+    image: django_dev
+    build:
+      context: ..
+      dockerfile: ./docker/development/django/Dockerfile
+    environment:
+      - DJANGO_SECRET_KEY=$DJANGO_SECRET_KEY
+      - DB_NAME=$DB_NAME
+      - DB_USER=$DB_USER
+      - DB_PASS=$DB_PASS
+    volumes:
+      - ../rpg:/app/
+      - ./development/django/entry.sh:/app/entry.sh
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    # command: python manage.py runserver 0.0.0.0:8000 --settings=rpg.settings.development
+    command: /bin/bash -c "
+      python manage.py migrate --no-input
+      && python manage.py loaddata classes levels races
+      && python manage.py runserver 0.0.0.0:8000 --settings=rpg.settings.development"
+
+volumes:
+  datavolume:
