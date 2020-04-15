@@ -1,11 +1,39 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block extend_head %}
+  <link rel="stylesheet" href="{% static 'creator/css/style.css' %}">
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $("#roll").click(function() {
+          $.get("{% url 'dice:roll_stats' %}", function(data) {
+              $("label[for='id_scores']").text('Ability Scores:');
+              $("input[name=scores]").val(data.stats.join(', '));
+          }, "json");
+      });
+
+      $("#point").click(function() {
+          $("label[for='id_scores']").text('Ability Points:');
+          $("input[name=scores]").val(25);
+      });
+    });
+  </script>
+{% endblock %}
 
 {% block content %}
   <form action="" method="post">
     {% csrf_token %}
     <table>
-    {{ form }}
+      {{ form }}
     </table>
-    <input type="submit" value="Next">
+    <br>
+    <button id='manual' type="button" class="btn btn-secondary">Manual</button>
+    <button id='point' type="button" class="btn btn-secondary">Point-Buy</button>
+    <button id='roll' type="button" class="btn btn-secondary">Roll</button>
+    <br><br>
+    <button type="submit" class="btn btn-primary">Next</button>
   </form>
 {% endblock %}
