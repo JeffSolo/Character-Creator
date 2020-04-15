@@ -19,9 +19,10 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
+    path('', views.HomeView.as_view(), name='home'),
+    path('accounts/', include('apps.accounts.urls', namespace='accounts')),
     path('admin/', admin.site.urls, name='admin'),
     path('creator/', include('apps.creator.urls', namespace='creator')),
-    path('accounts/', include('apps.accounts.urls', namespace='accounts')),
-    path('', views.HomeView.as_view(), name='home'),
+    path('dice/', include('apps.dice.urls', namespace='dice')),
     path('profile/', views.ProfileView.as_view(), name='profile'),
 ]
