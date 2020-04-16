@@ -5,14 +5,9 @@
 
     <p>Characters for {{ user.username }} </p>
     {% if characters %}
-
     <ul>
-
       {% for character in characters %}
       <li>
-        <!--
-        <a href="{% url 'book-detail' bookinst.book.pk %}">{{bookinst.book.title}}</a> ({{ bookinst.due_back }})
-        -->
         <p>{{ character.name }}</p>
       </li>
       {% endfor %}
@@ -23,5 +18,4 @@
     {% endif %}
 
     <a href="{% url 'creator:create' %}">Create Character</a>
-    <p><a href="{% url 'accounts:logout' %}">logout</a></p>
 {% endblock %}

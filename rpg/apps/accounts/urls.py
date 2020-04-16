@@ -8,5 +8,5 @@ app_name = 'accounts'
 urlpatterns = [
     path('', include('django.contrib.auth.urls')),
     path('signup/', SignUp.as_view(), name='signup'),
-    path('login/success/', RedirectView.as_view(pattern_name='profile'), name='login_success'),
+    path('login/success/', RedirectView.as_view(pattern_name='characters'), name='login_success'),
 ]

@@ -17,4 +17,4 @@ class SignUp(generic.CreateView):
         if user is not None:
             login(self.request, user)
 
-        return redirect('profile')
+        return redirect('characters')

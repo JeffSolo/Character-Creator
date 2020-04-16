@@ -7,16 +7,12 @@ from apps.creator.models import Characters
 
 
 class HomeView(generic.TemplateView):
-    def get(self, request, *args, **kwargs):
-        if request.user.is_authenticated:
-            return redirect('profile')
-        else:
-            return render(request, 'home.html')
+    template_name = 'rpg/home.html'
 
 
-class ProfileView(LoginRequiredMixin, generic.ListView):
+class CharactersView(LoginRequiredMixin, generic.ListView):
     model = Characters
-    template_name = 'rpg/profile.html'
+    template_name = 'rpg/characters.html'
     paginate_by = 10
     context_object_name = 'characters'
 

@@ -23,7 +23,6 @@ services:
       - DB_PASS=$DB_PASS
     volumes:
       - ../rpg:/app/
-      - ./development/django/entry.sh:/app/entry.sh
     ports:
       - "8000:8000"
     depends_on:
